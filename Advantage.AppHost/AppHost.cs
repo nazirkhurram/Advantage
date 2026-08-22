@@ -10,7 +10,11 @@ var controlPlaneDb = sql.AddDatabase("advantage-controlplane");
 var redis = builder.AddRedis("advantage-redis")
     .WithLifetime(ContainerLifetime.Persistent);
 
-// Tier A services (Advantage.Identity, Advantage.Tenancy, Advantage.Gateway, Advantage.Admin, ...)
-// are added here as they're scaffolded (see AD-12, AD-13, AD-14, AD-15).
+var identity = builder.AddProject<Projects.Advantage_Identity>("advantage-identity")
+    .WithReference(controlPlaneDb)
+    .WaitFor(controlPlaneDb);
+
+// Remaining Tier A services (Advantage.Tenancy, Advantage.Gateway, Advantage.Admin, ...)
+// are added here as they're scaffolded (see AD-13, AD-14, AD-15).
 
 builder.Build().Run();

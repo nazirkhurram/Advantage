@@ -6,6 +6,9 @@
 # dotenv files
 .env
 
+# Duende IdentityServer automatic key management (private signing key material)
+keys/
+
 # User-specific files
 *.rsuser
 *.suo

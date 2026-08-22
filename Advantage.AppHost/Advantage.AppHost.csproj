@@ -14,4 +14,8 @@
     <PackageReference Include="Aspire.Hosting.SqlServer" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Advantage.Identity\Advantage.Identity.csproj" />
+  </ItemGroup>
+
 </Project>

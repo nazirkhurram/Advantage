@@ -1,0 +1,44 @@
+@page
+@model Advantage.Identity.Pages.Account.ResetPassword.Index
+
+<div class="reset-password-page">
+    <div class="lead">
+        <h1>Reset your password</h1>
+    </div>
+
+    @if (Model.LinkInvalid)
+    {
+        <div class="alert alert-danger">This password reset link is invalid.</div>
+    }
+    else if (Model.Completed)
+    {
+        <div class="alert alert-info">
+            Your password has been reset. You can now <a asp-page="/Account/Login/Index">log in</a>.
+        </div>
+    }
+    else
+    {
+        <partial name="_ValidationSummary" />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <form asp-page="/Account/ResetPassword/Index" method="post">
+                    <input type="hidden" asp-for="Input.UserId" />
+                    <input type="hidden" asp-for="Input.Token" />
+
+                    <div class="form-group">
+                        <label asp-for="Input.Password"></label>
+                        <input type="password" class="form-control" asp-for="Input.Password" autofocus>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <input type="password" class="form-control" asp-for="Input.ConfirmPassword">
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Reset password</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
