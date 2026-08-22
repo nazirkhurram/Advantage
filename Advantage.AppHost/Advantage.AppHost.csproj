@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Advantage.Identity\Advantage.Identity.csproj" />
+    <ProjectReference Include="..\Advantage.Tenancy\Advantage.Tenancy.csproj" />
   </ItemGroup>
 
 </Project>
