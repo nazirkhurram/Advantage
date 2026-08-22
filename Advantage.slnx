@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Advantage.AppHost/Advantage.AppHost.csproj" />
+  <Project Path="Advantage.ServiceDefaults/Advantage.ServiceDefaults.csproj" />
+</Solution>
