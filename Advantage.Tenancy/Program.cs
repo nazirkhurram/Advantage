@@ -16,6 +16,12 @@ builder.Services.AddDbContext<TenancyDbContext>(options =>
 
 var app = builder.Build();
 
+if (args.Contains("/seed"))
+{
+    Advantage.Tenancy.SeedData.EnsureSeedData(app);
+    return;
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
