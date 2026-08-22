@@ -1,0 +1,33 @@
+@page
+@model Advantage.Identity.Pages.Account.ForgotPassword.Index
+
+<div class="forgot-password-page">
+    <div class="lead">
+        <h1>Forgot your password?</h1>
+        <p>Enter your email and we'll send you a link to reset it.</p>
+    </div>
+
+    @if (Model.EmailSent)
+    {
+        <div class="alert alert-info">
+            If an account exists for that email address, a password reset link has been sent.
+        </div>
+    }
+    else
+    {
+        <partial name="_ValidationSummary" />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <form asp-page="/Account/ForgotPassword/Index" method="post">
+                    <div class="form-group">
+                        <label asp-for="Input.Email"></label>
+                        <input class="form-control" placeholder="Email" asp-for="Input.Email" autofocus>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Send reset link</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
