@@ -1,0 +1,63 @@
+@model List<TenantDto>
+@{
+    ViewData["Title"] = "Tenants";
+    var products = (List<string>)ViewBag.Products;
+    var selectedProduct = (string?)ViewBag.SelectedProduct;
+}
+
+<h2>Tenants across all products</h2>
+
+<p>
+    <a href="/Tenants">All products</a>
+    @foreach (var product in products)
+    {
+        <text> | </text>
+        <a href="/Tenants?product=@product">@product</a>
+    }
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Tier</th>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Entitlement limits</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tenant in Model)
+        {
+            <tr>
+                <td>@tenant.Product</td>
+                <td>@tenant.Name</td>
+                <td>@tenant.Tier</td>
+                <td>@tenant.Status</td>
+                <td>@tenant.CreatedAt.ToString("yyyy-MM-dd")</td>
+                <td>
+                    @string.Join(", ", tenant.EntitlementLimits.Select(l => $"{l.Key}: {l.CurrentUsage}/{l.Limit}"))
+                </td>
+                <td>
+                    @if (tenant.Status == "Active")
+                    {
+                        <form method="post" action="/Tenants/Suspend/@tenant.Id">
+                            <button type="submit">Suspend</button>
+                        </form>
+                    }
+                    else if (tenant.Status == "Suspended")
+                    {
+                        <form method="post" action="/Tenants/Reactivate/@tenant.Id">
+                            <button type="submit">Reactivate</button>
+                        </form>
+                        <form method="post" action="/Tenants/Delete/@tenant.Id" onsubmit="return confirm('Permanently delete this tenant?');">
+                            <button type="submit">Delete</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

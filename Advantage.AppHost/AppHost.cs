@@ -23,8 +23,13 @@ var gateway = builder.AddProject<Projects.Advantage_Gateway>("advantage-gateway"
     .WithReference(identity)
     .WithReference(tenancy);
 
-// Remaining Tier A services (Advantage.Admin, ...) are added here as they're
-// scaffolded (see AD-15).
+// Consolidated tenant dashboard (plan section 1b / AD-15) — internal-only, no
+// auth wired up yet for the POC. See AD-33 before this leaves local dev.
+builder.AddProject<Projects.Advantage_Admin>("advantage-admin")
+    .WithReference(tenancy);
+
+// Remaining Tier A services (Advantage.Billing, Advantage.Notifications,
+// Advantage.Audit) are added here as they're scaffolded per the phased rollout.
 
 // GoatFarm POC product (plan section 6a / Epic AD-3): Web calls Api directly for
 // now. Routing product traffic through Advantage.Gateway is a follow-up once the
