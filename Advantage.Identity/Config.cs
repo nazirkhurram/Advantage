@@ -19,6 +19,18 @@ public static class Config
             new ApiScope("advantage.api"),
         };
 
+    // Without an explicit ApiResource, Duende emits a generic "{issuer}/resources"
+    // audience claim that Gateway's JwtBearer validation (Audience = "advantage.api")
+    // would reject. This gives access tokens a meaningful, stable audience instead.
+    public static IEnumerable<ApiResource> ApiResources =>
+        new ApiResource[]
+        {
+            new ApiResource("advantage.api", "Advantage Tier A API")
+            {
+                Scopes = { "advantage.api" },
+            },
+        };
+
     public static IEnumerable<Client> Clients =>
         new Client[]
         {
