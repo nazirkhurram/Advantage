@@ -26,4 +26,15 @@ var gateway = builder.AddProject<Projects.Advantage_Gateway>("advantage-gateway"
 // Remaining Tier A services (Advantage.Admin, ...) are added here as they're
 // scaffolded (see AD-15).
 
+// GoatFarm POC product (plan section 6a / Epic AD-3): Web calls Api directly for
+// now. Routing product traffic through Advantage.Gateway is a follow-up once the
+// Gateway's product-routing story is scoped (see AD-31 for the pattern used to
+// switch Identity/Tenancy's routes to service discovery).
+var goatFarmApi = builder.AddProject<Projects.GoatFarm_Api>("goatfarm-api")
+    .WithReference(identity);
+
+builder.AddProject<Projects.GoatFarm_Web>("goatfarm-web")
+    .WithReference(identity)
+    .WithReference(goatFarmApi);
+
 builder.Build().Run();
