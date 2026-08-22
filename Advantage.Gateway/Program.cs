@@ -5,8 +5,11 @@ using Microsoft.AspNetCore.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddServiceDiscovery();
+
 builder.Services.AddReverseProxy()
-    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
+    .AddServiceDiscoveryDestinationResolver();
 
 // Token validation (plan section 1/4): validates JWTs issued by Advantage.Identity
 // before any route protected by the RequireAuthenticatedUser policy is reachable.
