@@ -19,12 +19,9 @@ var tenancy = builder.AddProject<Projects.Advantage_Tenancy>("advantage-tenancy"
     .WithReference(tenancyDb)
     .WaitFor(tenancyDb);
 
-var gateway = builder.AddProject<Projects.Advantage_Gateway>("advantage-gateway");
-
-// TODO (follow-up, not part of this merge): Gateway still routes to Identity/Tenancy
-// via the hardcoded localhost URLs in appsettings.json. Now that both are AppHost
-// resources, switch YARP's cluster addresses to Aspire service discovery
-// (e.g. "https+http://advantage-identity") and add .WithReference()s here instead.
+var gateway = builder.AddProject<Projects.Advantage_Gateway>("advantage-gateway")
+    .WithReference(identity)
+    .WithReference(tenancy);
 
 // Remaining Tier A services (Advantage.Admin, ...) are added here as they're
 // scaffolded (see AD-15).
