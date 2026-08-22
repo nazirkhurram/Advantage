@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "SurveyApp — Survey Application";
+}
+
+<h2>Survey Application</h2>
+<p>Sign in to manage your surveys.</p>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <a href="/Home/Dashboard">Go to dashboard</a>
+}
+else
+{
+    <a href="/Account/Login">Log in</a>
+    <p><a href="@ViewBag.ForgotPasswordUrl">Forgot password?</a></p>
+}

@@ -20,6 +20,8 @@
     <ProjectReference Include="..\Advantage.Gateway\Advantage.Gateway.csproj" />
     <ProjectReference Include="..\products\GoatFarm\GoatFarm.Web\GoatFarm.Web.csproj" />
     <ProjectReference Include="..\products\GoatFarm\GoatFarm.Api\GoatFarm.Api.csproj" />
+    <ProjectReference Include="..\products\SurveyApp\SurveyApp.Web\SurveyApp.Web.csproj" />
+    <ProjectReference Include="..\products\SurveyApp\SurveyApp.Api\SurveyApp.Api.csproj" />
   </ItemGroup>
 
 </Project>

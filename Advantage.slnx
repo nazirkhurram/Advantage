@@ -7,4 +7,7 @@
   <Project Path="products/GoatFarm/GoatFarm.Web/GoatFarm.Web.csproj" />
   <Project Path="products/GoatFarm/GoatFarm.Api/GoatFarm.Api.csproj" />
   <Project Path="products/GoatFarm/GoatFarm.Mcp/GoatFarm.Mcp.csproj" />
+  <Project Path="products/SurveyApp/SurveyApp.Web/SurveyApp.Web.csproj" />
+  <Project Path="products/SurveyApp/SurveyApp.Api/SurveyApp.Api.csproj" />
+  <Project Path="products/SurveyApp/SurveyApp.Mcp/SurveyApp.Mcp.csproj" />
 </Solution>

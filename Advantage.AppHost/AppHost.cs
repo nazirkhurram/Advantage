@@ -37,4 +37,12 @@ builder.AddProject<Projects.GoatFarm_Web>("goatfarm-web")
     .WithReference(identity)
     .WithReference(goatFarmApi);
 
+// SurveyApp POC product — mirrors GoatFarm's shape exactly (plan section 6a).
+var surveyAppApi = builder.AddProject<Projects.SurveyApp_Api>("surveyapp-api")
+    .WithReference(identity);
+
+builder.AddProject<Projects.SurveyApp_Web>("surveyapp-web")
+    .WithReference(identity)
+    .WithReference(surveyAppApi);
+
 builder.Build().Run();
