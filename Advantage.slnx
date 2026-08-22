@@ -4,4 +4,7 @@
   <Project Path="Advantage.Identity/Advantage.Identity.csproj" />
   <Project Path="Advantage.ServiceDefaults/Advantage.ServiceDefaults.csproj" />
   <Project Path="Advantage.Tenancy/Advantage.Tenancy.csproj" />
+  <Project Path="products/GoatFarm/GoatFarm.Web/GoatFarm.Web.csproj" />
+  <Project Path="products/GoatFarm/GoatFarm.Api/GoatFarm.Api.csproj" />
+  <Project Path="products/GoatFarm/GoatFarm.Mcp/GoatFarm.Mcp.csproj" />
 </Solution>

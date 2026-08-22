@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>GoatFarm</title>
+</head>
+<body>
+    <header>
+        <h1>GoatFarm</h1>
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <span>Signed in as @User.Identity.Name</span>
+            <a href="/Account/Logout">Log out</a>
+        }
+        else
+        {
+            <a href="/Account/Login">Log in</a>
+        }
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>

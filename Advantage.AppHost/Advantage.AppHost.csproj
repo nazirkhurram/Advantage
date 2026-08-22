@@ -18,6 +18,8 @@
     <ProjectReference Include="..\Advantage.Identity\Advantage.Identity.csproj" />
     <ProjectReference Include="..\Advantage.Tenancy\Advantage.Tenancy.csproj" />
     <ProjectReference Include="..\Advantage.Gateway\Advantage.Gateway.csproj" />
+    <ProjectReference Include="..\products\GoatFarm\GoatFarm.Web\GoatFarm.Web.csproj" />
+    <ProjectReference Include="..\products\GoatFarm\GoatFarm.Api\GoatFarm.Api.csproj" />
   </ItemGroup>
 
 </Project>
