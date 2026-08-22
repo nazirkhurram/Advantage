@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Advantage.AppHost/Advantage.AppHost.csproj" />
+  <Project Path="Advantage.Gateway/Advantage.Gateway.csproj" />
   <Project Path="Advantage.Identity/Advantage.Identity.csproj" />
   <Project Path="Advantage.ServiceDefaults/Advantage.ServiceDefaults.csproj" />
   <Project Path="Advantage.Tenancy/Advantage.Tenancy.csproj" />
