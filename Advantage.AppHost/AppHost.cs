@@ -5,6 +5,7 @@ var sql = builder.AddSqlServer("advantage-sql")
     .WithLifetime(ContainerLifetime.Persistent);
 
 var controlPlaneDb = sql.AddDatabase("advantage-controlplane");
+var tenancyDb = sql.AddDatabase("advantage-tenancy");
 
 // JWT/JWKS caching, tenant-status/tier cache, rate-limit counters, distributed Identity sessions.
 var redis = builder.AddRedis("advantage-redis")
@@ -14,7 +15,11 @@ var identity = builder.AddProject<Projects.Advantage_Identity>("advantage-identi
     .WithReference(controlPlaneDb)
     .WaitFor(controlPlaneDb);
 
-// Remaining Tier A services (Advantage.Tenancy, Advantage.Gateway, Advantage.Admin, ...)
-// are added here as they're scaffolded (see AD-13, AD-14, AD-15).
+var tenancy = builder.AddProject<Projects.Advantage_Tenancy>("advantage-tenancy")
+    .WithReference(tenancyDb)
+    .WaitFor(tenancyDb);
+
+// Remaining Tier A services (Advantage.Gateway, Advantage.Admin, ...)
+// are added here as they're scaffolded (see AD-14, AD-15).
 
 builder.Build().Run();
